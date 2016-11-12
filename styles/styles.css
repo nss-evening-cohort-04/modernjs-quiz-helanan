@@ -130,10 +130,11 @@ li.complete a {
 }
 
 
-/* FORM STYLES */
+ FORM STYLES 
 
-form {
+select {
   padding: 0 20px 20px 20px;
+  display: inline-block;
 }
 
 label {
@@ -174,9 +175,9 @@ input[type='submit']:hover, a.add:hover, a.show:hover {
 
 
 ::-webkit-input-placeholder {color: #403c3b; font-family: arial, sans-serif;}
-:-moz-placeholder { /* Firefox 18- */ color: #403c3b; font-family: arial, sans-serif;}
-::-moz-placeholder {  /* Firefox 19+ */ color: #403c3b; font-family: arial, sans-serif;}
-:-ms-input-placeholder { color: #403c3b; font-family: arial, sans-serif;}
+:-moz-placeholder {  Firefox 18-  color: #403c3b; font-family: arial, sans-serif;}
+::-moz-placeholder { Firefox 19+  color: #403c3b; font-family: arial, sans-serif;}
+ms-input-placeholder { color: #403c3b; font-family: arial, sans-serif;}
 
 
 textarea {
@@ -212,7 +213,7 @@ a.show{
 }
 
 #newRobotButton {
-
+padding: 10px 20px 75px 20px; display: none;
 }
 
 #showForm {
@@ -220,15 +221,59 @@ a.show{
 }
 
 #newRobotForm {
+padding-top: 20px;
+}
 
+#newRobotForm input[type='submit'] {
+	margin-top: 0; text-align: left;
 }
 
 #robotDescription {
-
+width: 360px;
 }
 
 #addRobot {
 
 }
 
+#footer {
+  background:none;
+  color: #fff;
+}
 
+
+@media only screen and (max-width: 500px) {
+  body {
+      background-color: #403c3b;
+  }
+  #page {
+    max-width: 480px;
+  }
+}
+
+@media only screen and (min-width: 501px) and (max-width: 767px) {
+  #page {
+    max-width: 480px;
+    margin: 20px auto 20px auto;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+  #page {
+    max-width: 480px;
+    margin: 20px auto 20px auto;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  #page {
+    max-width: 480px;
+    margin: 20px auto 20px auto;
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+  h1{
+    background-image: url();
+    background-size: 72px 72px;
+  }
+}

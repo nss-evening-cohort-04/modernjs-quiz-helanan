@@ -1,123 +1,148 @@
-//function 1
-function CatBot () {
-  this.type = null;
-  this.health = 100;
-  this.baseDamage = Math.floor(Math.random() * 10);
-  this.weapon = null;
-}
-console.log("Catbot", CatBot);
+"use strict";
+//main CatBot Function
 
-CatBot.prototype = new CatBot();
-    //function 1
-    CatBot.prototype.pounce = function (target) {
-      this.totalDamage = this.baseDamage + this.weapon.damage;
-      target.life -= this.totalDamage;
-    }
+var CatBotFight = (function (catbotSelected) {
 
-CatBot.prototype.hiss = function (fishbreath) {
-      this.totalDamage = this.baseDamage + this.weapon.damage;
-      target.life -= this.totalDamage;
-    }
+  catbotSelected = {};
 
+  catbotSelected.CatBotType = function() {
+    this.name = "";
+    this.baseDamage = Math.floor(Math.random() * 100);
+    this.life = 1000;
 
-      function AerialCat () {
-        this.type = "Fit";
-        this.attackType = "Aerial";
-      }
+    this.toString = function() {
+      return this.name;
+    };
+  };
 
-AerialCat.prototype = new CatBot();
+  catbotSelected.CatBotType.DroneCat = function() {
+    this.type = "Drone";
+   };
+  catbotSelected.CatBotType.DroneCat.prototype = new catbotSelected.CatBotType();
 
-      function NinjaCat () {
-        this.type = "Fit";
-        this.baseDamage += 30;
-        this.attackType = "Aerial"
-      }
-console.log("NinjaCat", NinjaCat);
+  catbotSelected.CatBotType.LandCat = function() {
+    this.type = "Land";
+  };
+   catbotSelected.CatBotType.LandCat.prototype = new catbotSelected.CatBotType();
 
-          NinjaCat.prototype = new AerialCat();
-console.log("AerialCat", AerialCat);
-      function stealthyCat () {
-        this.baseDamage += 60;
-      }
-
-          StealthyCat.prototype = new AerialCat();
-
-      function StealthyCat () {
-        this.type = "Fit"
-        this.attackType = "take a nap";
-      }
-console.log("StealthyCat", stealthyCat);
-
-//function 3
-// GroundCat.prototype = new CatBot();
-
-      function FatCat () {
-        this.type = "Chubby";
-        this.baseDamage += 5;
-      }
-        //function4
-        // FatCat.prototype = new GroundCat();
-
-      function LazyCat () {
-        this.baseDamage += 3;
-      }
-
-        LazyCat.prototype = new FatCat();
-
-      function SleepyCat () {
-        this.baseDamage += 1;
-      }
-
-        SleepyCat.prototype = new FatCat();
-
-      function SquishyCat () {
-        this.type = "Intelligant";
-        this.baseDamage += 200;
-      }
-        //function 5
-        //SquishyCat.prototype = new GroundCat();
-
-//function 6
-//var ScratchyCat = new ScratchyCat();
-
-//function7
-//ScratchyCat.weapon = new LongNails();
-//console.log("ScratchyCat", ScratchyCat.life);
-
-//function10
-
-var fishbreath = this.baseDamage += 10 + this.weaponDamage;
-
-var SmellyCat = new CatBot();
-  this.type = "Stinky";
-  this.baseDamage += 400;
-  this.weapon = fishbreath;
+catbotSelected.CatBotType.SleeperCat = function() {
+  this.type = "Sleeper";
+};
+   catbotSelected.CatBotType.SleeperCat.prototype = new catbotSelected.CatBotType();
 
 
-var GroundCat = new CatBot();
-  this.type = "GroundCat";
-  this.baseDamage += 600;
-  //this.weapon = glitter;
-  this.weaponDamage += 200;
+ catbotSelected.NinjaCat = function() {
+  this.baseDamage += 30;
+  this.name = "NinjaCat";
+  this.life += 80;
+ };
+ catbotSelected.NinjaCat.prototype = new catbotSelected.CatBotType.DroneCat();
 
-var AerialCat = new CatBot();
-  this.type = "AerialCat";
-  this.baseDamage += 700;
-  //this.weapon += glitter;
-  this.weaponDamage += 200;
+ catbotSelected.FlyingCat = function() {
+  this.baseDamage += 10;
+  this.name = "Flying Cat"
+  this.life += 200;
+ };
+ catbotSelected.FlyingCat.prototype = new catbotSelected.CatBotType.DroneCat();
 
-//function8
+catbotSelected.FatCat = function(){
+  this.baseDamage += 12;
+  this.name = "FatCat";
+  this.life += 150;
+};
+ catbotSelected.FatCat.prototype = new catbotSelected.CatBotType.LandCat();
 
 
-//function9  
-//SmellyCat.attack(ScratchyCat);
-//console.log("ScratchyCat", ScratchyCat.life);
+catbotSelected.SquishyCat = function(){
+  this.baseDamage += 15;
+  this.name = "SquishyCat";
+  this.life += 250;
+};
+catbotSelected.SquishyCat.prototype = new catbotSelected.CatBotType.LandCat();
 
-function LitterBox () {
+catbotSelected.LazyCat = function(){
+  this.baseDamage += 2;
+  this.name = "LazyCat";
+  this.life += 400;
+};
+catbotSelected.LazyCat.prototype = new catbotSelected.CatBotType.SleeperCat();
 
-}
+catbotSelected.StealthyCat = function(){
+  this.baseDamage += 20;
+  this.name = "StealthyCat";
+  this.life += 300;
+};
+catbotSelected.StealthyCat.prototype = new catbotSelected.CatBotType.SleeperCat();
 
-console.log("SmellyCat", SmellyCat);
-console.log("GroundCat", GroundCat);
-console.log("AerialCat", AerialCat);
-// console.log("SmellyCat", SmellyCat);
+return catbotSelected;
+})(CatBotFight || {});
+
+// function catBot () {
+//   this.type = null;
+//   this.health = Math.floor((Math.random() * 100) + 200);
+//   this.baseDamage = Math.floor((Math.random() * 10) + 5);
+//   this.weapon = null;
+//   console.log(this);
+// }
+
+// function DroneCat () {
+//   this.type = "Drone";
+//   this.property = "air";
+// }
+// DroneCat.prototype = new CatBot();
+
+// function LandCat() {
+//     this.type = "land";
+//     this.property = "outside";
+//     this.attackType = "scratch";
+// }
+// LandCat.prototype = new CatBot();
+
+// function SleeperCat(){
+//     this.type = "land";
+//     this.property = "inside";
+//     this.attackType = "sleep";
+// }
+// SleeperCat.prototype = new CatBot();
+
+// function NinjaCat(){
+//   this.baseDamage += 30;
+//   this.damgage = damageConfig(60, 110);
+// }
+// NinjaCat.prototype = new DroneCat();
+
+// function FlyingCat(){
+//   this.baseDamage += 10;
+//   this.damgage = damageConfig(70, 100);
+// }
+// FlyingCat.prototype = new DroneCat();
+
+// function FatCat(){
+//   this.baseDamage += 12;
+//   this.health += 2;
+//   this.damgage = damageConfig(50, 80);
+// }
+// FatCat.prototype = new LandCat();
+
+// function SquishyCat(){
+//   this.baseDamage += 15;
+//   this.health += 3;
+//   this.damgage = damageConfig(70, 110);
+// }
+// SquishyCat.prototype = new LandCat();
+
+// function LazyCat(){
+//   this.baseDamage += 2;
+//   this.health += 7;
+//   this.damgage = damageConfig(60, 100);
+// }
+// LazyCat.prototype = new SleeperCat();
+
+// function StealthyCat(){
+//   this.baseDamage += 20;
+//   this.health += 5;
+//   this.damgage = damageConfig(50, 90);
+// }
+// StealthyCat.prototype = new SleeperCat();
+
+
